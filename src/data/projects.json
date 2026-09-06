@@ -1,0 +1,23 @@
+{
+    "project1": {
+      "id": 1,
+      "title": "Калькулятор баллов Ярче",
+      "description": "Описание проекта 1",
+      "image": "Yarche.png",
+      "link": "https://github.com/DimaDimitriev/Yarchessss"
+    },
+    "project2": {
+      "id": 2,
+      "title": "Голосовой помощник",
+      "description": "Описание проекта 2",
+      "image": "assistent.png",
+      "link": "https://github.com/DimaDimitriev/VoiceAssistant"
+    },
+    "project3": {
+      "id": 3,
+      "title": "Робот Kuka You",
+      "description": "Описание проекта 3",
+      "image": "robot.png",
+      "link": "https://github.com/DimaDimitriev/KukaYoubot"
+    }
+}
