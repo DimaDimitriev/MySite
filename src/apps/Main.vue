@@ -49,5 +49,5 @@
 </template>
 
 <script setup lang="ts">
-import skills from '../data/skills.json'
+import skills from '../data/Skills.json'
 </script>
