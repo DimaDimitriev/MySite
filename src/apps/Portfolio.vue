@@ -1,75 +1,40 @@
 <template>
-  <div class="app">
+  <main>
+    <section class="project-panel">
+      <a
+        v-for="project in projects"
+        :key="project.id"
+        class="project-card"
+        :href="project.link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <div class="project-image">
+          <img :src="getImageUrl(project.image)" :alt="project.title" loading="lazy">
+        </div>
 
-    <!-- HEADER -->
-    <header>
-      <p class="logo">
-        Димитриев Дмитрий
-      </p>
+        <div class="project-body">
+          <h2>{{ project.title }}</h2>
+          <p>{{ project.description }}</p>
+          <ul class="chips">
+            <li v-for="tag in project.tags" :key="tag" class="chip">{{ tag }}</li>
+          </ul>
+        </div>
 
-      <p>
-        
-      </p>
-    
-      <nav>
-        <RouterLink to="/">Главная</RouterLink>
-        <RouterLink to="/about">Обо мне</RouterLink>
-        <RouterLink to="/portfolio">Портфолио</RouterLink>
-      </nav>
-    </header>
-
-    <!-- MAIN -->
-    <main>
-      <section class="project-panel">
-          <div
-              class="project-card"
-              v-for="project in Projects"
-              :key="project.id"
-          >
-              <div class="project-image">
-                <img :src="getImageUrl(project.image)" :alt="project.title">
-              </div>
-
-              <div class="project-footer">
-                  <span>{{ project.title }}</span>
-
-                  <a
-                      :href="project.link"
-                      target="_blank"
-                      class="project-arrow"
-                  >
-                      →
-                  </a>
-              </div>
-          </div>
-      </section>
-    </main>
-
-    <footer></footer>
-
-    </div>
+        <div class="project-footer">
+          <span>Смотреть код на GitHub</span>
+          <span class="project-arrow" aria-hidden="true">→</span>
+        </div>
+      </a>
+    </section>
+  </main>
 </template>
 
 <script setup lang="ts">
-    import { ref } from 'vue';
-    import Projects from '../data/projects.json'
+import projectsData from '../data/projects.json'
 
+const projects = Object.values(projectsData)
 
-    const selectedId = ref(0)
-    const selectedDescription = ref('')
-    const selectedTitle = ref('')
-    const selectedImage = ref('')
-    const selectedLink = ref('')
-
-    function openProject(type: keyof typeof Projects){
-        selectedId.value = Projects[type].id
-        selectedDescription.value = Projects[type].description
-        selectedImage.value = Projects[type].image
-        selectedTitle.value = Projects[type].title
-        selectedLink.value = Projects[type].link
-    }
-
-    const getImageUrl = (fileName: string): string => {
-    return new URL(`../data/${fileName}`, import.meta.url).href;
-    };
+const getImageUrl = (fileName: string): string =>
+  new URL(`../data/${fileName}`, import.meta.url).href
 </script>

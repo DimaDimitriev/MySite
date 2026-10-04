@@ -1,99 +1,53 @@
 <template>
-  <div class="app">
+  <main>
+    <section class="hero">
+      <div class="hero__image">
+        <img src="../data/photo.png" alt="Димитриев Дмитрий">
+      </div>
 
-    <!-- HEADER -->
-    <header>
-      <p class="logo">
-        Димитриев Дмитрий
-      </p>
+      <div class="hero__content">
+        <p class="hero__status">Ищу стажировку и первый коммерческий опыт</p>
 
-      <nav>
-        <RouterLink to="/">Главная</RouterLink>
-        <RouterLink to="/about">Обо мне</RouterLink>
-        <RouterLink to="/portfolio">Портфолио</RouterLink>
-      </nav>
-    </header>
+        <h1 class="hero__title">
+          Разработчик, который<br>превращает вашу идею<br>в продукт
+        </h1>
 
+        <p class="hero__text">
+          Я — Димитриев Дмитрий, студент 3 курса Томского политехнического
+          университета и начинающий веб-разработчик.
+        </p>
+        <p class="hero__text">
+          Создаю веб-приложения на Vue и React, пишу на Python и проектирую
+          макеты в Figma. Мои пет-проекты — на GitHub.
+        </p>
 
-    <!-- MAIN -->
-    <main>
-
-      <section class="hero">
-
-        <!-- Фото -->
-        <div class="hero__image">
-          <img
-            src="../data/photo.png"
-            alt="Димитриев Дмитрий"
-          >
+        <div class="hero__buttons">
+          <RouterLink to="/portfolio" class="hero__button">Мои проекты</RouterLink>
+          <RouterLink to="/about" class="hero__button">Обо мне</RouterLink>
         </div>
+      </div>
+    </section>
 
+    <section class="skills" id="skills">
+      <h2 class="section-title">Навыки</h2>
 
-        <!-- Текст -->
-        <div class="hero__content">
-
-          <h1 class="hero__title">
-            Разработчик, который
-            <br>
-            превращает вашу идею
-            <br>
-            в продукт
-          </h1>
-
-
-          <p class="hero__text">
-            Я — Димитриев Дмитрий, студент 3 курса
-            Томского политехнического университета
-            и начинающий веб-разработчик.
-          </p>
-
-          <p class="hero__text">
-            Создаю современные веб-приложения
-            с помощью Vue и React, постоянно развиваю
-            свои навыки и превращаю интересные идеи
-            в работающие цифровые решения.
-          </p>
-
-          <p class="hero__text">
-            Владею навыками программирования на Python.
-            Могу разработать или доработать макет
-            в Figma. Сосредоточен на качественной
-            разработке и поддержке.
-          </p>
-
-
-          <!-- Кнопки -->
-          <div class="hero__buttons">
-
-            <router-link
-              to="/about"
-              class="hero__button"
-            >
-              Обо мне
-            </router-link>
-
-            <router-link
-              to="/portfolio"
-              class="hero__button"
-            >
-              Мои проекты
-            </router-link>
-
-          </div>
-
-        </div>
-
-      </section>
-
-    </main>
-
-
-    <!-- FOOTER -->
-    <footer>
-    </footer>
-
-  </div>
+      <div class="skills__grid">
+        <article
+          v-for="group in skills"
+          :key="group.title"
+          class="skills__group"
+          :class="{ 'skills__group--learning': group.learning }"
+        >
+          <h3>{{ group.title }}</h3>
+          <ul class="chips">
+            <li v-for="item in group.items" :key="item" class="chip">{{ item }}</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
 </template>
 
 <script setup lang="ts">
+import skills from '../data/skills.json'
 </script>
